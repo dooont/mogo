@@ -1,0 +1,103 @@
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5u-NwYVKV_7HE79JpAxNhbRkLBp8v7z0&loading=async&libraries=places&callback=initAutoComplete">
+</script>
+<div class="flex justify-between">
+  <button onclick="window.location.href='/';"
+    class="bg-cream-white text-pastel-purple font-bold py-2 px-4 rounded hover:bg-nyu-purple hover:text-white transition-colors duration-300 ease-in-out">
+    Back to Home
+  </button>
+  <button id="clearBoard"
+    class="bg-cream-white text-pastel-purple font-bold py-2 px-4 rounded hover:bg-nyu-purple hover:text-white transition-colors duration-300 ease-in-out">
+    Clear Board
+  </button>
+</div>
+</div>
+<div class="bg-pastel-purple p-6 min-h-50">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-2xl font-bold text-center text-nyu-purple mb-4">
+      username's Mogo Board
+    </h2>
+
+    <div class="flex justify-between space-x-4">
+      <!-- Have Not Been Column -->
+      <div class="w-1/3 bg-cream-white shadow-lg rounded-lg p-4">
+        <h3 class="font-bold text-pastel-purple mb-2">Have Not Been</h3>
+        <div id="addNeverBeen" class="bg-white border-2 border-nyu-purple rounded-md p-2 mb-2">
+
+        </div>
+      </div>
+
+      <!-- Planning On Going Column -->
+      <div class="w-1/3 bg-cream-white shadow-lg rounded-lg p-4">
+        <h3 class="font-bold text-pastel-purple mb-2">Planning On Going</h3>
+        <div id="addGoingTo" class="bg-white border-2 border-nyu-purple rounded-md p-2 mb-2">
+
+        </div>
+      </div>
+
+      <!-- Been To Column -->
+      <div class="w-1/3 bg-cream-white shadow-lg rounded-lg p-4">
+        <h3 class="font-bold text-pastel-purple mb-2">Been To</h3>
+        <div id="addBeenTo" class="bg-white border-2 border-nyu-purple rounded-md p-2 mb-2">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<form class="w-full" method="POST" action="/dashboard">
+  <div class="max-w-sm mx-auto bg-cream-white p-4 shadow-md rounded-lg">
+    <div class="mb-4">
+      <label for="name" class="text-gray-700">Name of restaurant:</label>
+      <div class="mt-1">
+        <input type="text" id="name" name="name" class="w-full p-2 border border-nyu-purple rounded"
+          placeholder="Name of Restaurant" required>
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <label for="address" class="text-gray-700">Address:</label>
+      <div class="mt-1">
+        <input type="text" id="address" name="address" class="w-full p-2 border border-nyu-purple rounded"
+          placeholder="Address" required>
+      </div>
+    </div>
+
+    <div class="flex mb-4">
+      <div class="w-1/2 pr-2">
+        <label for="cuisine" class="text-gray-700">Cuisine:</label>
+        <div class="mt-1">
+          <input type="text" id="cuisine" name="cuisine" class="w-full p-2 border border-nyu-purple rounded"
+            placeholder="Cuisine" required>
+        </div>
+      </div>
+      <div class="w-1/2 pl-2">
+        <label for="price" class="text-gray-700">Price:</label>
+        <div class="mt-1">
+          <input type="text" id="price" name="price" class="w-full p-2 border border-nyu-purple rounded"
+            placeholder="Price ($-$$$$)" required>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex justify-between">
+      <button id="neverBeen" type="submit" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
+        Never Been
+      </button>
+      <button id="goingTo" type="submit"
+        class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded">
+        Going To
+      </button>
+      <button id="beenTo" type="submit" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
+        Have Been
+      </button>
+    </div>
+  </div>
+</form>
+{{!-- adding a map to display where the resturants are --}}
+<div id="map" style="width: 100%; height: 500px" class="w-3/4 rounded-md"></div>
+
+
+<script src="dashboard.js"></script>
+<script src="autocomplete.js"></script>
+{{!-- move dashboard.js (make it a js to public, use fetch)
+in app.mjs, modify your post to add to the database --}}

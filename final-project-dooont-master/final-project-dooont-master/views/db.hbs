@@ -1,0 +1,35 @@
+<button onclick="window.location.href='/';" class="bg-cream-white text-pastel-purple font-bold py-2 px-4 rounded hover:bg-nyu-purple hover:text-white transition-colors duration-300 ease-in-out">
+    Back to Home
+</button>
+<h1 class="text-5xl font-bold font-for-titles p-4 text-center bg-nyu-purple text-white">
+    Restaurant!
+</h1>
+<div class="overflow-x-auto relative shadow-md sm:rounded-lg my-4">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs uppercase bg-cream-white">
+            <tr>
+                <th scope="col" class="py-3 px-6 text-gray-700">Name</th>
+                <th scope="col" class="py-3 px-6 text-gray-700">Address</th>
+                <th scope="col" class="py-3 px-6 text-gray-700">Cuisine</th>
+                <th scope="col" class="py-3 px-6 text-gray-700">Price</th>
+                <th scope="col" class="py-3 px-6"></th>
+                <th scope="col" class="py-3 px-6"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each restaurants}}
+            <tr class="bg-cream-white hover:bg-white">
+                <td class="py-4 px-6 text-gray-700 hover:text-pastel-purple">{{this.name}}</td>
+                <td class="py-4 px-6 text-gray-700 hover:text-pastel-purple">{{this.address}}</td>
+                <td class="py-4 px-6 text-gray-700 hover:text-pastel-purple">{{this.cuisine}}</td>
+                <td class="py-4 px-6 text-gray-700 hover:text-pastel-purple">{{this.price}}</td>
+                <td class="py-4 px-6"><a href="/db/edit?name={{this._id}}" class="font-medium text-blue-600 hover:underline">Edit</a></td>
+                <td class="py-4 px-6"><a href="/db/delete?name={{this._id}}" class="font-medium text-red-600 hover:underline">Delete</a></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+<button onclick="window.location.href='/db/add';" class="bg-cream-white text-pastel-purple font-bold py-2 px-4 rounded hover:bg-nyu-purple hover:text-white transition-colors duration-300 ease-in-out">
+    Add a New Restaurant
+</button>
